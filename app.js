@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
 const { options } = require("request");
+require('dotenv').config({path: './TEST.env'});
 
 const app = express();
 
@@ -35,7 +36,7 @@ app.post("/",function(req,res){
     const url="https://us14.api.mailchimp.com/3.0/lists/abbe2b3cc5";
     const options={
         method:"POST",
-        auth:"Dhriti1:657415071249a1afc75d9b15317597d9-us14"
+        auth:process.env.API_KEY
     }
     const request=https.request(url,options,function(response){
         if(response.statusCode===200){
